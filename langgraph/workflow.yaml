@@ -1,0 +1,33 @@
+nodes:
+  - id: "start"
+    type: "input"
+    description: "Start node to accept user queries."
+    
+  - id: "parse_query"
+    type: "action"
+    description: "Parse user input and extract query parameters."
+    action: "parse_query_function"
+
+  - id: "retrieve_documents"
+    type: "action"
+    description: "Retrieve relevant legal documents based on parsed query."
+    action: "retrieve_documents_function"
+    
+  - id: "process_results"
+    type: "action"
+    description: "Process and summarize the retrieved documents."
+    action: "process_results_function"
+    
+  - id: "end"
+    type: "output"
+    description: "Output node to display the results."
+
+edges:
+  - from: "start"
+    to: "parse_query"
+  - from: "parse_query"
+    to: "retrieve_documents"
+  - from: "retrieve_documents"
+    to: "process_results"
+  - from: "process_results"
+    to: "end"
